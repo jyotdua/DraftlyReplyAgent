@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Draftly Project Report</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 18mm 16mm;
+      }
+
+      :root {
+        --bg: #f5efe8;
+        --ink: #2a1b16;
+        --muted: #8b624e;
+        --accent: #ff5c00;
+        --line: #ddcfc1;
+        --panel: #fffaf5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Trebuchet MS", Arial, sans-serif;
+        line-height: 1.45;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 36px 22px 44px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        margin: 0 0 10px;
+        color: var(--ink);
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-top: 28px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--line);
+      }
+
+      h3 {
+        font-size: 18px;
+        margin-top: 18px;
+      }
+
+      p,
+      li {
+        font-size: 14px;
+        margin: 0 0 8px;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #fff9f4, #f4e8dc);
+        border: 2px solid var(--line);
+        border-radius: 18px;
+        padding: 26px 28px;
+        margin-bottom: 24px;
+      }
+
+      .eyebrow {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .subtle {
+        color: var(--muted);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px 18px;
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+        margin: 8px 0 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 13px;
+        background: white;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 8px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #f4e8dc;
+      }
+
+      .diagram {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px;
+        margin-top: 14px;
+      }
+
+      .note {
+        border-left: 4px solid var(--accent);
+        background: #fff4ec;
+        padding: 12px 14px;
+        margin: 14px 0;
+      }
+
+      .page-break {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      .footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="eyebrow">Project Report</div>
+        <h1>Draftly: Gmail AI Reply Agent</h1>
+        <p class="subtle">
+          Full project report covering architecture, implementation approach, high-level design (HLD),
+          low-level design (LLD), security, workflows, testing, and future enhancements.
+        </p>
+      </section>
+
+      <section class="grid-2">
+        <div class="card">
+          <h3>Project Summary</h3>
+          <p>
+            Draftly is a backend-first email assistant that connects to Gmail, reads thread context,
+            generates reply drafts using Gemini, stores draft history in SQLite, and only sends emails
+            after explicit approval.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Technology Stack</h3>
+          <p>FastAPI, Python, SQLAlchemy, SQLite, Gmail API, Gemini API, OAuth2, Tenacity, Fernet.</p>
+        </div>
+      </section>
+
+      <h2>1. Introduction</h2>
+      <p>
+        Draftly was designed as a practical Gmail AI reply backend that solves a real workflow problem:
+        repetitive email replies consume time, yet fully autonomous sending is risky without context,
+        style alignment, and user control. The project focuses on building a reliable service layer that
+        combines Gmail integration, prompt-driven reply generation, persistent draft lifecycle management,
+        and send reliability features.
+      </p>
+
+      <h2>2. Problem Statement</h2>
+      <p>
+        Routine confirmations, follow-ups, acknowledgements, and scheduling responses are repetitive but
+        still require context-awareness, correct threading, and appropriate tone. A useful AI assistant
+        must therefore do more than generate text; it must understand thread context, preserve metadata,
+        support review-before-send, and record operational events for traceability.
+      </p>
+
+      <h2>3. Objectives</h2>
+      <ul>
+        <li>Integrate securely with Gmail using OAuth2.</li>
+        <li>Fetch inbox messages and thread history via REST APIs.</li>
+        <li>Generate AI-assisted reply drafts using Gemini.</li>
+        <li>Use user preferences and recent sent emails for personalization.</li>
+        <li>Persist drafts, send attempts, and logs in a database.</li>
+        <li>Support approve, edit, reject, and send workflows.</li>
+        <li>Ensure send reliability with retries and idempotency.</li>
+      </ul>
+
+      <h2>4. Scope</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>In Scope</h3>
+          <ul>
+            <li>FastAPI backend</li>
+            <li>Gmail OAuth and mailbox APIs</li>
+            <li>Gemini-based draft generation</li>
+            <li>SQLite persistence</li>
+            <li>Review and send workflow</li>
+            <li>Logging and status tracking</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Out of Scope</h3>
+          <ul>
+            <li>Production frontend</li>
+            <li>Cloud deployment automation</li>
+            <li>Background worker infrastructure</li>
+            <li>Advanced observability dashboards</li>
+            <li>Team collaboration features</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>5. Functional and Non-Functional Requirements</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Requirements</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Functional</td>
+            <td>OAuth login, inbox fetch, thread fetch, preferences save, draft generation, review, send, log access.</td>
+          </tr>
+          <tr>
+            <td>Security</td>
+            <td>Encrypted credentials and preferences, OAuth token revocation, explicit approval before send.</td>
+          </tr>
+          <tr>
+            <td>Reliability</td>
+            <td>Idempotent draft/send requests, retry mechanism for transient send failures, stored status transitions.</td>
+          </tr>
+          <tr>
+            <td>Maintainability</td>
+            <td>Separation of concerns across routes, services, repositories, and models.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="page-break"></div>
+
+      <h2>6. High-Level Design (HLD)</h2>
+      <p>
+        The system follows a layered backend architecture. Clients interact with FastAPI routes. Those
+        routes delegate work to service classes. The Gmail service owns mailbox and OAuth responsibilities,
+        the Gemini service owns prompt generation and LLM calls, and the draft workflow service coordinates
+        cross-service logic. Persistence is handled through repositories and SQLAlchemy models on top of SQLite.
+      </p>
+
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 860 350" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="130" width="120" height="60" rx="12" fill="#ff5c00"/>
+          <text x="80" y="165" text-anchor="middle" fill="white" font-size="18" font-family="Trebuchet MS" font-weight="700">Client</text>
+
+          <rect x="190" y="130" width="150" height="60" rx="12" fill="#2a1b16"/>
+          <text x="265" y="165" text-anchor="middle" fill="white" font-size="18" font-family="Trebuchet MS" font-weight="700">FastAPI Routes</text>
+
+          <rect x="395" y="35" width="180" height="60" rx="12" fill="#f4e8dc" stroke="#c7b6a7"/>
+          <text x="485" y="70" text-anchor="middle" fill="#2a1b16" font-size="18" font-family="Trebuchet MS" font-weight="700">Gmail Service</text>
+
+          <rect x="395" y="130" width="180" height="60" rx="12" fill="#f4e8dc" stroke="#c7b6a7"/>
+          <text x="485" y="165" text-anchor="middle" fill="#2a1b16" font-size="18" font-family="Trebuchet MS" font-weight="700">Draft Workflow Service</text>
+
+          <rect x="395" y="225" width="180" height="60" rx="12" fill="#f4e8dc" stroke="#c7b6a7"/>
+          <text x="485" y="260" text-anchor="middle" fill="#2a1b16" font-size="18" font-family="Trebuchet MS" font-weight="700">Gemini Service</text>
+
+          <rect x="640" y="80" width="180" height="60" rx="12" fill="#fffaf5" stroke="#c7b6a7"/>
+          <text x="730" y="115" text-anchor="middle" fill="#2a1b16" font-size="18" font-family="Trebuchet MS" font-weight="700">Repository Layer</text>
+
+          <rect x="640" y="205" width="180" height="60" rx="12" fill="#fffaf5" stroke="#c7b6a7"/>
+          <text x="730" y="240" text-anchor="middle" fill="#2a1b16" font-size="18" font-family="Trebuchet MS" font-weight="700">SQLite Database</text>
+
+          <line x1="140" y1="160" x2="190" y2="160" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="340" y1="160" x2="395" y2="65" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="340" y1="160" x2="395" y2="160" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="340" y1="160" x2="395" y2="255" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="575" y1="65" x2="640" y2="110" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="575" y1="160" x2="640" y2="110" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="575" y1="160" x2="640" y2="235" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="575" y1="255" x2="640" y2="235" stroke="#2a1b16" stroke-width="3"/>
+          <line x1="730" y1="140" x2="730" y2="205" stroke="#2a1b16" stroke-width="3"/>
+        </svg>
+      </div>
+
+      <div class="note">
+        <strong>HLD summary:</strong> FastAPI acts as the orchestration layer, Gmail and Gemini are external
+        system integrations, and SQLite provides durable storage for account state, drafts, send attempts,
+        and audit logs.
+      </div>
+
+      <h2>7. Main Modules</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">app/main.py</td>
+            <td>Route definitions, dependency injection, request validation, response mapping.</td>
+          </tr>
+          <tr>
+            <td class="mono">app/services/gmail_service.py</td>
+            <td>OAuth flow, Gmail client creation, message/thread retrieval, draft creation, sending.</td>
+          </tr>
+          <tr>
+            <td class="mono">app/services/gemini_service.py</td>
+            <td>Prompt preparation and Gemini reply generation.</td>
+          </tr>
+          <tr>
+            <td class="mono">app/services/draft_service.py</td>
+            <td>End-to-end orchestration of draft generation and sending workflows.</td>
+          </tr>
+          <tr>
+            <td class="mono">app/services/repositories.py</td>
+            <td>Persistence helpers, status updates, audit logging.</td>
+          </tr>
+          <tr>
+            <td class="mono">app/models.py</td>
+            <td>ORM entities for users, OAuth state, drafts, send attempts, and audit logs.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="page-break"></div>
+
+      <h2>8. Low-Level Design (LLD)</h2>
+      <p>
+        The LLD describes how internal modules collaborate at the request, service, and persistence level.
+        The backend keeps routing thin and moves operational logic into services and repositories.
+      </p>
+
+      <h3>8.1 Route-Level Design</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Endpoint</th>
+            <th>Purpose</th>
+            <th>Core Module(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">GET /api/auth/google/start</td>
+            <td>Create OAuth state and consent URL</td>
+            <td>main.py, gmail_service.py, repositories.py</td>
+          </tr>
+          <tr>
+            <td class="mono">GET /api/auth/google/callback</td>
+            <td>Exchange auth code and persist credentials</td>
+            <td>main.py, gmail_service.py, repositories.py</td>
+          </tr>
+          <tr>
+            <td class="mono">GET /api/emails</td>
+            <td>Fetch inbox message summaries</td>
+            <td>main.py, gmail_service.py</td>
+          </tr>
+          <tr>
+            <td class="mono">POST /api/drafts/generate</td>
+            <td>Generate and persist an AI draft</td>
+            <td>main.py, draft_service.py, gmail_service.py, gemini_service.py</td>
+          </tr>
+          <tr>
+            <td class="mono">POST /api/drafts/{id}/review</td>
+            <td>Approve, edit, or reject a draft</td>
+            <td>main.py, repositories.py</td>
+          </tr>
+          <tr>
+            <td class="mono">POST /api/drafts/{id}/send</td>
+            <td>Send an approved draft with retries</td>
+            <td>main.py, draft_service.py, gmail_service.py, repositories.py</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>8.2 Entity Design</h3>
+      <div class="diagram">
+        <svg width="100%" viewBox="0 0 860 560" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#2a1b16"/>
+            </marker>
+          </defs>
+
+          <rect x="40" y="50" width="230" height="150" rx="12" fill="#fffaf5" stroke="#c7b6a7" stroke-width="2"/>
+          <text x="60" y="82" fill="#2a1b16" font-size="20" font-family="Trebuchet MS" font-weight="700">UserAccount</text>
+          <text x="60" y="112" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">PK: id</text>
+          <text x="60" y="134" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">email</text>
+          <text x="60" y="156" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">encrypted_credentials</text>
+          <text x="60" y="178" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">encrypted_preferences</text>
+
+          <rect x="340" y="50" width="220" height="135" rx="12" fill="#fffaf5" stroke="#c7b6a7" stroke-width="2"/>
+          <text x="360" y="82" fill="#2a1b16" font-size="20" font-family="Trebuchet MS" font-weight="700">OAuthState</text>
+          <text x="360" y="112" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">PK: id</text>
+          <text x="360" y="134" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">state, redirect_uri</text>
+          <text x="360" y="156" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">FK: user_id</text>
+
+          <rect x="40" y="270" width="300" height="215" rx="12" fill="#fffaf5" stroke="#c7b6a7" stroke-width="2"/>
+          <text x="60" y="302" fill="#2a1b16" font-size="20" font-family="Trebuchet MS" font-weight="700">EmailDraft</text>
+          <text x="60" y="332" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">PK: id</text>
+          <text x="60" y="354" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">FK: user_id</text>
+          <text x="60" y="376" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">source_message_id, thread_id</text>
+          <text x="60" y="398" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">subject, tone, status</text>
+          <text x="60" y="420" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">generated_body, edited_body</text>
+          <text x="60" y="442" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">gmail_draft_id, gmail_sent_message_id</text>
+          <text x="60" y="464" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">prompt_context, draft_metadata</text>
+
+          <rect x="430" y="260" width="220" height="160" rx="12" fill="#fffaf5" stroke="#c7b6a7" stroke-width="2"/>
+          <text x="450" y="292" fill="#2a1b16" font-size="20" font-family="Trebuchet MS" font-weight="700">SendAttempt</text>
+          <text x="450" y="322" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">PK: id</text>
+          <text x="450" y="344" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">FK: draft_id</text>
+          <text x="450" y="366" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">attempt_number, status</text>
+          <text x="450" y="388" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">idempotency_key</text>
+          <text x="450" y="410" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">gmail_message_id, gmail_thread_id</text>
+
+          <rect x="430" y="455" width="220" height="85" rx="12" fill="#fffaf5" stroke="#c7b6a7" stroke-width="2"/>
+          <text x="450" y="487" fill="#2a1b16" font-size="20" font-family="Trebuchet MS" font-weight="700">AuditLog</text>
+          <text x="450" y="517" fill="#2a1b16" font-size="14" font-family="Trebuchet MS">PK: id, FK: user_id, event_type, payload</text>
+
+          <line x1="270" y1="120" x2="340" y2="120" stroke="#2a1b16" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="288" y="108" fill="#8b624e" font-size="13" font-family="Trebuchet MS">1 : N</text>
+
+          <line x1="155" y1="200" x2="155" y2="270" stroke="#2a1b16" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="168" y="242" fill="#8b624e" font-size="13" font-family="Trebuchet MS">1 : N</text>
+
+          <line x1="340" y1="355" x2="430" y2="340" stroke="#2a1b16" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="368" y="333" fill="#8b624e" font-size="13" font-family="Trebuchet MS">1 : N</text>
+
+          <line x1="250" y1="485" x2="430" y2="498" stroke="#2a1b16" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="314" y="478" fill="#8b624e" font-size="13" font-family="Trebuchet MS">user events</text>
+
+        </svg>
+      </div>
+
+      <p class="subtle">
+        The data model is centered around <span class="mono">UserAccount</span> and <span class="mono">EmailDraft</span>.
+        OAuth states are temporary records used during login, send attempts preserve idempotent send history,
+        and audit logs provide traceability across authentication, draft generation, review, and sending.
+      </p>
+
+      <h3>8.3 Draft Generation Sequence</h3>
+      <ol>
+        <li>API receives <span class="mono">POST /api/drafts/generate</span>.</li>
+        <li>User account is loaded by email.</li>
+        <li>Gmail service fetches the source message and its thread.</li>
+        <li>Gmail service fetches recent sent emails for style samples.</li>
+        <li>Gemini service generates a reply body from the compiled prompt.</li>
+        <li>Repository layer stores the draft and metadata.</li>
+        <li>Gmail service creates a Gmail-side draft for continuity.</li>
+        <li>Audit log is recorded.</li>
+      </ol>
+
+      <h3>8.4 Send Sequence</h3>
+      <ol>
+        <li>User approves or edits a draft.</li>
+        <li>API receives <span class="mono">POST /api/drafts/{id}/send</span>.</li>
+        <li>Draft workflow validates status and creates/reuses a send-attempt record.</li>
+        <li>Gmail message is built with reply headers and thread ID.</li>
+        <li>Send is executed with retry logic.</li>
+        <li>Draft, send-attempt, and log states are updated.</li>
+      </ol>
+
+      <div class="page-break"></div>
+
+      <h2>9. Security Design</h2>
+      <ul>
+        <li>OAuth2 is used for Gmail access rather than storing passwords.</li>
+        <li>Stored credentials and preferences are encrypted with Fernet.</li>
+        <li>Only approved or edited drafts can be sent.</li>
+        <li>Logout revokes the Google token and deletes the user account record.</li>
+        <li>Audit logs preserve operational visibility for sensitive actions.</li>
+      </ul>
+
+      <h2>10. Testing and Validation</h2>
+      <p>The project was validated with both code-level and runtime checks:</p>
+      <ul>
+        <li>Utility tests via <span class="mono">pytest</span>.</li>
+        <li>FastAPI health endpoint validation.</li>
+        <li>Local server boot validation with Uvicorn.</li>
+        <li>Gemini response generation smoke test.</li>
+        <li>OAuth-start flow validation after Google client configuration.</li>
+      </ul>
+
+      <h2>11. Challenges and Trade-offs</h2>
+      <ul>
+        <li>Thread correctness required preserving Gmail headers and thread IDs.</li>
+        <li>Human control was prioritized over autonomous sending.</li>
+        <li>Lightweight style learning was chosen instead of a heavy personalization engine.</li>
+        <li>SQLite was selected for simplicity, knowing production deployments would likely use a stronger database.</li>
+      </ul>
+
+      <h2>12. Future Enhancements</h2>
+      <ul>
+        <li>Frontend dashboard for inbox and draft review.</li>
+        <li>Background workers for retry queues and maintenance tasks.</li>
+        <li>Observability metrics and dashboards.</li>
+        <li>Richer user-level prompt templates and response profiles.</li>
+        <li>Production-grade deployment with stronger persistence and secret management.</li>
+      </ul>
+
+      <h2>13. Conclusion</h2>
+      <p>
+        Draftly demonstrates a full backend architecture for an AI-assisted Gmail reply system. The
+        implemented design integrates Gmail, Gemini, draft review, encrypted persistence, and send
+        reliability into one cohesive workflow. The design remains intentionally modular so that the
+        project can evolve into a larger product with UI, background jobs, and production deployment.
+      </p>
+
+      <div class="footer">
+        Draftly Report | Generated from implemented project structure and verified local workflow
+      </div>
+    </main>
+  </body>
+</html>

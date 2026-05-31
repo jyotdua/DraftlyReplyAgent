@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+.env.*
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+*.log
+data/*.db
+data/.draftly.key
+rendered/
+google-oauth-client.json

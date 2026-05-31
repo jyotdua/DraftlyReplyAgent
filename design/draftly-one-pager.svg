@@ -1,0 +1,117 @@
+<svg width="1350" height="1800" viewBox="0 0 1350 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1350" height="1800" fill="#261A18"/>
+  <rect x="170" y="18" width="1010" height="1764" rx="6" fill="#F4EDE6"/>
+  <rect x="170" y="18" width="1010" height="1764" rx="6" stroke="#D7CCC0" stroke-width="4"/>
+
+  <circle cx="226" cy="420" r="170" fill="#E7D8CB" fill-opacity="0.45"/>
+  <circle cx="1072" cy="1510" r="210" fill="#EEDFD3" fill-opacity="0.55"/>
+  <circle cx="1110" cy="1560" r="140" fill="#F7EEE7" fill-opacity="0.9"/>
+
+  <text x="240" y="120" fill="#2B1B16" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700">Draftly</text>
+  <text x="240" y="158" fill="#8B624E" font-family="'Trebuchet MS', Arial, sans-serif" font-size="25">AI-powered Gmail reply agent</text>
+
+  <rect x="240" y="195" width="450" height="285" rx="10" fill="#DECBBB"/>
+  <rect x="260" y="215" width="410" height="245" rx="10" fill="#FFF9F4"/>
+  <rect x="286" y="242" width="150" height="176" rx="12" fill="#FFF0E4"/>
+  <rect x="306" y="267" width="112" height="20" rx="10" fill="#FF5C00" fill-opacity="0.15"/>
+  <rect x="306" y="301" width="96" height="11" rx="5.5" fill="#CEB9AA"/>
+  <rect x="306" y="322" width="86" height="11" rx="5.5" fill="#D8C6B9"/>
+  <rect x="306" y="350" width="120" height="46" rx="12" fill="#2B1B16"/>
+  <text x="324" y="380" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="16" font-weight="700">Generate</text>
+  <rect x="470" y="238" width="160" height="72" rx="12" fill="#FFF2E8"/>
+  <text x="490" y="267" fill="#915E42" font-family="'Trebuchet MS', Arial, sans-serif" font-size="18" font-weight="700">Gmail</text>
+  <text x="490" y="293" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="16">Connected</text>
+  <circle cx="500" cy="352" r="16" fill="#FF5C00"/>
+  <circle cx="546" cy="352" r="16" fill="#FFD8BF"/>
+  <circle cx="592" cy="352" r="16" fill="#2B1B16"/>
+  <rect x="470" y="387" width="146" height="14" rx="7" fill="#2B1B16"/>
+  <rect x="470" y="414" width="132" height="10" rx="5" fill="#B8937D"/>
+  <rect x="470" y="437" width="142" height="10" rx="5" fill="#D7C6B8"/>
+
+  <text x="735" y="242" fill="#2B1B16" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700">Unlock Faster</text>
+  <text x="735" y="294" fill="#2B1B16" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-style="italic" font-weight="700">Email</text>
+  <text x="735" y="346" fill="#2B1B16" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700">Workflows</text>
+  <text x="735" y="398" fill="#2B1B16" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700">with Draftly</text>
+
+  <path d="M930 430H1112V496H930L906 463L930 430Z" fill="#FF5C00"/>
+  <text x="958" y="471" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20" font-weight="700">Project headline</text>
+
+  <path d="M18 620H258V724H18V620Z" fill="#FF5C00"/>
+  <text x="42" y="674" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Brief</text>
+  <text x="42" y="714" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">overview</text>
+
+  <path d="M18 745H258V849H18V745Z" fill="#FF5C00"/>
+  <text x="42" y="799" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Problem</text>
+  <text x="42" y="839" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">statement</text>
+
+  <path d="M18 870H258V954H18V870Z" fill="#FF5C00"/>
+  <text x="42" y="924" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Solution</text>
+
+  <path d="M18 1286H258V1404H18V1286Z" fill="#FF5C00"/>
+  <text x="42" y="1340" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Future</text>
+  <text x="42" y="1380" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">objectives</text>
+
+  <text x="290" y="625" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="800">WHO WE ARE:</text>
+  <text x="290" y="662" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">Draftly combines Gmail and Gemini</text>
+  <text x="290" y="686" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">to handle repetitive email work</text>
+  <text x="290" y="710" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">faster while keeping final</text>
+  <text x="290" y="734" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">approval human-led.</text>
+
+  <text x="290" y="790" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="800">THE PROBLEM:</text>
+  <text x="290" y="826" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">Routine confirmations and</text>
+  <text x="290" y="850" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">follow-ups consume hours each</text>
+  <text x="290" y="874" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">week, while rushed replies create</text>
+  <text x="290" y="898" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">missed context and uneven tone.</text>
+
+  <text x="290" y="953" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="800">THE SOLUTION:</text>
+  <text x="290" y="990" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">Draftly fetches Gmail threads,</text>
+  <text x="290" y="1014" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">learns from recent sent emails,</text>
+  <text x="290" y="1038" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">creates context-aware drafts, and</text>
+  <text x="290" y="1062" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="17">supports review plus secure sending.</text>
+
+  <path d="M980 520H1160V598H980L956 559L980 520Z" fill="#FF5C00"/>
+  <text x="1005" y="563" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="19" font-weight="700">Key benefits /</text>
+  <text x="1005" y="590" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="19" font-weight="700">features</text>
+
+  <text x="780" y="625" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="800">THE BENEFITS:</text>
+
+  <circle cx="798" cy="690" r="5" fill="#2B1B16"/>
+  <text x="820" y="696" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">Secure Gmail OAuth2</text>
+  <text x="820" y="718" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">integration for fetching,</text>
+  <text x="820" y="740" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">threading, and sending.</text>
+
+  <circle cx="798" cy="798" r="5" fill="#2B1B16"/>
+  <text x="820" y="804" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">Gemini-powered drafting</text>
+  <text x="820" y="826" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">with formal, friendly,</text>
+  <text x="820" y="848" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">and concise tones.</text>
+
+  <circle cx="798" cy="906" r="5" fill="#2B1B16"/>
+  <text x="820" y="912" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">Learns from recent sent</text>
+  <text x="820" y="934" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">emails and saved user</text>
+  <text x="820" y="956" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">preferences.</text>
+
+  <circle cx="798" cy="1014" r="5" fill="#2B1B16"/>
+  <text x="820" y="1020" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">Review-first workflow for</text>
+  <text x="820" y="1042" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">approve, edit, reject,</text>
+  <text x="820" y="1064" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">and secure sending.</text>
+
+  <circle cx="798" cy="1122" r="5" fill="#2B1B16"/>
+  <text x="820" y="1128" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">Retries, idempotency, logs,</text>
+  <text x="820" y="1150" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">and SQLite storage improve</text>
+  <text x="820" y="1172" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="15">backend reliability.</text>
+
+  <text x="290" y="1314" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="800">WHAT'S NEXT:</text>
+  <text x="290" y="1353" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20">Next iterations can add an inbox dashboard, smarter style</text>
+  <text x="290" y="1381" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20">profiles, background workers for retries, and stronger</text>
+  <text x="290" y="1409" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20">analytics around review quality and turnaround time.</text>
+
+  <rect x="290" y="1498" width="715" height="126" fill="#111111"/>
+  <text x="648" y="1552" text-anchor="middle" fill="#FFF9F4" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700">Connect Gmail, generate a reply, review it,</text>
+  <text x="648" y="1588" text-anchor="middle" fill="#FFF9F4" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700">and send with confidence through Draftly.</text>
+
+  <path d="M928 1622H1110V1688H928L904 1655L928 1622Z" fill="#FF5C00"/>
+  <text x="956" y="1663" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21" font-weight="700">Call to action</text>
+
+  <text x="292" y="1676" fill="#8B624E" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">FastAPI backend   |   Gmail OAuth2   |   Gemini-powered drafting</text>
+  <text x="292" y="1716" fill="#8B624E" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20">Project: Draftly Gmail AI Reply Agent</text>
+</svg>

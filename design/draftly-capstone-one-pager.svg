@@ -1,0 +1,77 @@
+<svg width="1350" height="1800" viewBox="0 0 1350 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1350" height="1800" fill="#241816"/>
+  <rect x="110" y="20" width="1130" height="1760" rx="10" fill="#F5EFE8"/>
+  <rect x="110" y="20" width="1130" height="1760" rx="10" stroke="#D8CEC3" stroke-width="4"/>
+
+  <circle cx="215" cy="320" r="170" fill="#E7D7CA" fill-opacity="0.45"/>
+  <circle cx="1110" cy="1505" r="205" fill="#EEDFD2" fill-opacity="0.55"/>
+  <circle cx="1135" cy="1560" r="128" fill="#F8EFE9" fill-opacity="0.92"/>
+
+  <text x="190" y="135" fill="#2B1B16" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700">Capstone One-Pager</text>
+  <text x="190" y="188" fill="#8A624E" font-family="'Trebuchet MS', Arial, sans-serif" font-size="27">Backend Engineering Launchpad</text>
+
+  <rect x="190" y="240" width="970" height="150" rx="14" fill="#FFF8F3"/>
+  <rect x="190" y="240" width="970" height="150" rx="14" stroke="#E1D5CA" stroke-width="3"/>
+  <text x="225" y="292" fill="#8A624E" font-family="'Trebuchet MS', Arial, sans-serif" font-size="24" font-weight="700">SELECTED TOPIC</text>
+  <text x="225" y="352" fill="#2B1B16" font-family="Georgia, 'Times New Roman', serif" font-size="50" font-weight="700">Draftly: Gmail AI Reply Agent</text>
+
+  <path d="M30 465H288V565H30V465Z" fill="#FF5C00"/>
+  <text x="58" y="520" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Problem</text>
+
+  <path d="M30 595H288V735H30V595Z" fill="#FF5C00"/>
+  <text x="58" y="650" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Approach</text>
+  <text x="58" y="690" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Step-by-step</text>
+
+  <path d="M30 1282H288V1382H30V1282Z" fill="#FF5C00"/>
+  <text x="58" y="1338" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="700">Outcome</text>
+
+  <text x="340" y="490" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="25" font-weight="800">PROBLEM STATEMENT</text>
+  <text x="340" y="536" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">Professionals spend time writing repetitive email replies such as</text>
+  <text x="340" y="568" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">confirmations, follow-ups, and acknowledgements. The system should</text>
+  <text x="340" y="600" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">generate smart reply drafts, preserve thread context, and keep the</text>
+  <text x="340" y="632" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">user in full control before anything is sent.</text>
+
+  <text x="340" y="700" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="25" font-weight="800">STEP-BY-STEP APPROACH</text>
+
+  <circle cx="360" cy="768" r="20" fill="#2B1B16"/>
+  <text x="353" y="777" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20" font-weight="700">1</text>
+  <text x="398" y="754" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="700">Design the backend flow</text>
+  <text x="398" y="786" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">Define APIs for Gmail connect, inbox fetch, draft generation, review,</text>
+  <text x="398" y="816" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">approval, send, and logs.</text>
+
+  <circle cx="360" cy="888" r="20" fill="#2B1B16"/>
+  <text x="352" y="897" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20" font-weight="700">2</text>
+  <text x="398" y="874" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="700">Integrate Gmail securely</text>
+  <text x="398" y="906" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">Use OAuth2 for access, fetch unread/recent messages, preserve</text>
+  <text x="398" y="936" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">thread IDs, headers, and metadata for replies.</text>
+
+  <circle cx="360" cy="1008" r="20" fill="#2B1B16"/>
+  <text x="352" y="1017" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20" font-weight="700">3</text>
+  <text x="398" y="994" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="700">Generate drafts with Gemini</text>
+  <text x="398" y="1026" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">Pass thread context, tone preference, signature, and recent sent</text>
+  <text x="398" y="1056" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">emails so the draft matches the user’s style.</text>
+
+  <circle cx="360" cy="1128" r="20" fill="#2B1B16"/>
+  <text x="352" y="1137" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20" font-weight="700">4</text>
+  <text x="398" y="1114" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="700">Add human review before send</text>
+  <text x="398" y="1146" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">Store generated drafts and allow approve, edit, or reject actions so</text>
+  <text x="398" y="1176" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">AI assistance stays supervised.</text>
+
+  <circle cx="360" cy="1248" r="20" fill="#2B1B16"/>
+  <text x="352" y="1257" fill="#FFF7F1" font-family="'Trebuchet MS', Arial, sans-serif" font-size="20" font-weight="700">5</text>
+  <text x="398" y="1234" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22" font-weight="700">Make sending reliable</text>
+  <text x="398" y="1266" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">Use retries, idempotency keys, encrypted credentials, and logs for</text>
+  <text x="398" y="1296" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="21">safe sending, debugging, and operational visibility.</text>
+
+  <text x="340" y="1326" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="25" font-weight="800">HIGH-LEVEL DESIGN</text>
+  <text x="340" y="1372" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">FastAPI APIs manage auth, inbox, drafts, review, send, and logs.</text>
+  <text x="340" y="1404" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">Gmail handles mailbox access, Gemini generates replies, and SQLite</text>
+  <text x="340" y="1436" fill="#2B1B16" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">stores users, preferences, drafts, send attempts, and audit history.</text>
+
+  <rect x="340" y="1490" width="700" height="140" fill="#111111"/>
+  <text x="690" y="1542" text-anchor="middle" fill="#FFF8F2" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700">Final goal:</text>
+  <text x="690" y="1580" text-anchor="middle" fill="#FFF8F2" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700">an extensible Gmail AI reply backend</text>
+  <text x="690" y="1612" text-anchor="middle" fill="#FFF8F2" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700">with human approval.</text>
+
+  <text x="340" y="1690" fill="#8A624E" font-family="'Trebuchet MS', Arial, sans-serif" font-size="23">Selected topic: Draftly | Stack: FastAPI, Gmail API, Gemini, SQLite</text>
+</svg>
