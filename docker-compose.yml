@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  draftly-api:
+    build: .
+    container_name: draftly-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8000
+      DATABASE_URL: sqlite:////app/data/draftly.db
+      GOOGLE_OAUTH_CLIENT_PATH: /app/google-oauth-client.json
+      GOOGLE_REDIRECT_URI: http://localhost:8000/api/auth/google/callback
+    volumes:
+      - ./data:/app/data
+      - ./google-oauth-client.json:/app/google-oauth-client.json:ro
+    restart: unless-stopped

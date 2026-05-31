@@ -4,6 +4,13 @@ Draftly Reply Agent is a backend-first AI email assistant that connects to Gmail
 
 The project was built as a FastAPI service with a modular design so it can later support a frontend dashboard, background workers, and richer analytics without a major rewrite.
 
+## Submission Links
+
+- GitHub repository: `https://github.com/jyotdua/DraftlyReplyAgent`
+- Full report: `reports/word/draftly-report.docx`
+- One-pager assets: `design/`
+- Demo video guide: `DEMO_SCRIPT.md`
+
 ## Features
 
 - Gmail OAuth2 connect, callback, status check, and logout flow
@@ -81,6 +88,34 @@ GOOGLE_REDIRECT_URI=http://localhost:8000/api/auth/google/callback
 ```
 
 5. Download your Google OAuth client JSON from Google Cloud and place it in the project root as `google-oauth-client.json`.
+
+## Run with Docker
+
+### Prerequisites
+
+- Docker Desktop installed and running
+- `.env` file created from `.env.example`
+- `google-oauth-client.json` placed in the project root
+
+### Build and start
+
+```bash
+docker compose up --build
+```
+
+The API will be available at `http://localhost:8000`.
+
+### Stop the container
+
+```bash
+docker compose down
+```
+
+### Notes for Docker usage
+
+- The SQLite database is persisted through the `./data` folder mounted into the container.
+- The Google OAuth file is mounted read-only into the container at `/app/google-oauth-client.json`.
+- The redirect URI should remain `http://localhost:8000/api/auth/google/callback` for local Docker testing.
 
 ## Run the Server
 
@@ -213,6 +248,26 @@ source .venv/bin/activate
 pytest -q
 ```
 
+## Docker Commands Reference
+
+Build the image manually:
+
+```bash
+docker build -t draftly-reply-agent .
+```
+
+Run the container manually:
+
+```bash
+docker run --rm -p 8000:8000 \
+  --env-file .env \
+  -e DATABASE_URL=sqlite:////app/data/draftly.db \
+  -e GOOGLE_OAUTH_CLIENT_PATH=/app/google-oauth-client.json \
+  -v "$(pwd)/data:/app/data" \
+  -v "$(pwd)/google-oauth-client.json:/app/google-oauth-client.json:ro" \
+  draftly-reply-agent
+```
+
 ## Security Notes
 
 - Gmail credentials and stored preferences are encrypted before being saved.
@@ -231,3 +286,16 @@ pytest -q
 - Add background workers for retries and token refresh handling
 - Add richer personalization and reusable reply templates
 - Add deployment automation and observability support
+
+## Demo Video Plan
+
+Keep the demo under 5 minutes and cover this flow:
+
+1. Introduce the problem statement and what Draftly solves.
+2. Show the repository structure and key modules.
+3. Start the project using Docker or local FastAPI.
+4. Show the health endpoint working.
+5. Show Gmail auth start flow.
+6. Show inbox fetch and one draft generation request in Postman.
+7. Show review and send endpoints at a high level.
+8. Close with the HLD/LLD report and future enhancements.
